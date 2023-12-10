@@ -1,0 +1,89 @@
+************** Personal Assistant(PA-one place to look at) ********************
+
+Base idea for this application:
+	1. Need a place to note down the tasks that we are going to do.
+	2. Need to know which are all completed and pending.
+	3. Need a place to add important remainders
+		- marriage dates, birthdays, payment dates, ...
+	4. Need to add important information(for record purpose)
+		- payment made information
+		- Any thing that we need to maintain a copy
+	5. Need a place to note down all the expences that we made.
+	6. Document storage
+		- aadhaar, pan,... certificates
+		- reciepts
+		...
+	7. Image storage(Private images and documents will be password protected.).
+	8. Need a place for family to get the required information in case of our abscence.
+
+--------------------------------------------------------------------------------------------------
+Tech stack:
+	Frontend:
+		- Javascript
+		- HTML
+		- CSS
+		- Bootstrap
+
+	Backend:
+		- Python Flask
+		- SQLAlchemy
+
+	DB:
+		- PostgreSQL
+
+	Cloud Storage:
+		- Google Drive
+
+	Integration:
+		- Email
+		- WhatsApp
+
+------------------------------------------------------------------------------------------------
+Detailed functionality of PA:
+	To-Do tab:
+		- Option to add New Task (name, category, description, start date, piority(1-10), end date, status,....)
+		- Option to see to-do list every day(sorts them based on piority)
+		- Option to see pending tasks
+		- Option to update/edit tasks(mark as completed, inactivate, ....)
+	
+	Remainders tab:
+		- Option to add remainder(Name, description, dead line, remind from, remainder frequency status.....)(On-time remainder, monthly remainder, Yearly remainders, daily remaiders, ..)
+		- Option to update/edit remainders(Mark as completed, ...)
+	
+	Notes tab:
+		- Option to add note(Name, description, date, supporting documents, ...)
+		- Option to update notes
+		use: make a note of payments, important tasks done, ........
+
+	Finance management tab:
+		- Option to create finance audit sheet
+			- Each sheet contains
+				- Name
+				- description
+				- balance
+				- transactions(debit and credits)
+					- description
+					- amount
+					- date
+					- debit/credit
+					- remark
+				- Expected debits
+					- description
+					- date
+					- amount
+					- status
+					- remark
+				- Expected Credits
+					- description
+					- date
+					- amount
+					- status
+					- remark
+
+	Documents tab:
+		- Option to add new document(name, description, private/publice, document, ...)
+		use: store important documents, files, images(personal, certificate, ...)
+		- Option to download document.
+
+
+---------------------------------------------------------------------------------------------

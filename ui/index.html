@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Assistant</title>
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <div class="hr-div" id="app-name">Personal Assistant</div>
+            <div class="hr-div" id="user-name">Welcome, Jangam Sravan!</div>
+            <div class="hr-div" id="user-section"><img src="images/user_profile.png" class="user-icon" alt="User Image"
+                    style="border-radius: 50%;" width="40" height="40"></div>
+        </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <nav>
+        <a onclick="showTab('home')">Home</a>
+        <a onclick="showTab('todo')">To-Do</a>
+        <a onclick="showTab('reminders')">Reminders</a>
+        <a onclick="showTab('notes')">Notes</a>
+        <a onclick="showTab('finance')">Finance</a>
+        <a onclick="showTab('documents')">Documents</a>
+    </nav>
+
+    <!-- Tab Content -->
+    <div class="container tab-content" id="home">
+        <!-- Add 4 Data Cards for Home Tab -->
+        <!-- To-Do Card -->
+        <div class="card-2">
+            <div class="card">
+                <h5 class="card-heading">Today</h5>
+                <ul>
+                    <li>Completed Coding question</li>
+                    <li>Pay Credit card bill</li>
+                    <li></li>
+                </ul>
+                <a class="more-btn" onclick="goToTab('todo')">Detail..</a>
+
+            </div>
+            <div class="card">
+                <h5 class="card-heading">Pending Tasks</h5>
+                <ul>
+                    <li>Room Cleaning</li>
+                    <li>Buy fruits</li>
+                    <li>Arrange .....</li>
+                </ul>
+                <a class="more-btn" onclick="goToTab('todo')">Detail..</a>
+            </div>
+
+        </div>
+
+        <!-- Pending Tasks Card -->
+        <div class="card-2">
+            <div class="card">
+                <h5 class="card-heading">Reminders</h5>
+                <ul>
+                    <li>Credit card bill last date - 08 Dec 2023</li>
+                    <li>Sravan Birthday - 01 Feb</li>
+                </ul>
+                <a class="more-btn" onclick="goToTab('reminders')">Detail..</a>
+            </div>
+
+            <!-- Finance Card -->
+            <div class="card">
+                <h5 class="card-heading">Finance(22000-30000 - 8000)</h5>
+                <ul>
+                    <li>Credit card bill(08 Dec 2023) = 8000/-</li>
+                    <li>Hostel fee(05 Dec 2023) 16000/-</li>
+                </ul>
+                <a class="more-btn" onclick="goToTab('finance')">Detail..</a>
+            </div>
+
+
+        </div>
+
+        <!-- Reminders Card -->
+
+    </div>
+
+    <div class="container tab-content" id="todo">
+        <!-- Add To-Do Tab Content Here -->
+
+        <div class="list-card">
+            <div>
+                <nav class="list-card-nav">
+                    <a onclick="showTaskAddForm()" class="list-card-buttons">Add-Task</a>
+                    <a onclick="showTasks('today')" class="list-card-buttons">Today</a>
+                    <a onclick="showTasks('pending')" class="list-card-buttons">Pending</a>
+                    <a onclick="showTasks('all')" class="list-card-buttons">All Tasks</a>
+                    <a> <input type="text" placeholder="Search.." name="search"><button type="submit"><img src="images/search.png" width="10px" height="10px"></button></a>
+                </nav>
+            </div>
+            <div class="list-card-content">
+                <div id="tasks-add">
+                    <form onsubmit="addNewTask(); return false;">
+                        <div class="form-group">
+                            <label for="taskName">Task Name:</label>
+                            <input type="text" id="taskName" required>
+                        </div>
+                        <button class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+                <div id="tasks-list-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Description</th>
+                                <th>Deadline</th>
+                                <th>Status</th>
+                                <th>Edit</th>
+                            </tr>
+                        </thead>
+                        <tbody id="item-list">
+                            <!-- Item rows will be added dynamically here -->
+                        </tbody>
+                    </table>
+
+                    <div class="pagination" id="task-pagination">
+                        <!-- Pagination links will be added dynamically here -->
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+    <div class="container tab-content" id="reminders">
+        <!-- Add To-Do Tab Content Here -->
+
+        <div class="list-card">
+            <div>
+                <nav class="list-card-nav">
+                    <a onclick="showRemainderForm()" class="list-card-buttons">Add-Reminder</a>
+                    <a onclick="showReminders('all')" class="list-card-buttons">Reminders</a>
+                    <a> <input type="text" placeholder="Search.." name="search"><button type="submit"><i
+                                class="fa fa-search"></i></button></a>
+                </nav>
+            </div>
+            <div class="list-card-content">
+                <div id="reminders-add">
+                    <form onsubmit="addReminder(); return false;">
+                        <div class="form-group">
+                            <label for="reminderName">Reminder name:</label>
+                            <input type="text" id="reminder-name" required>
+                        </div>
+                        <button class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+                <div id="reminders-list-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Description</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                                <th>Edit</th>
+                            </tr>
+                        </thead>
+                        <tbody id="reminders-list">
+                            <!-- Item rows will be added dynamically here -->
+                        </tbody>
+                    </table>
+
+                    <div class="pagination" id="reminder-pagination">
+                        <!-- Pagination links will be added dynamically here -->
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+    <div class="container tab-content" id="notes">
+        <!-- Add To-Do Tab Content Here -->
+
+        <div class="list-card">
+            <div>
+                <nav class="list-card-nav">
+                    <a onclick="showTaskAddForm()" class="list-card-buttons">Add-Task</a>
+                    <a onclick="showTasks('today')" class="list-card-buttons">Today</a>
+                    <a onclick="showTasks('pending')" class="list-card-buttons">Pending</a>
+                    <a onclick="showTasks('all')" class="list-card-buttons">All Tasks</a>
+                    <a> <input type="text" placeholder="Search.." name="search"><button type="submit"><i
+                                class="fa fa-search"></i></button></a>
+                </nav>
+            </div>
+            <div class="list-card-content">
+                <div id="tasks-add">
+                    <form onsubmit="addNewTask(); return false;">
+                        <div class="form-group">
+                            <label for="taskName">Task Name:</label>
+                            <input type="text" id="taskName" required>
+                        </div>
+                        <button class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+                <div id="tasks-list">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Description</th>
+                                <th>Deadline</th>
+                                <th>Status</th>
+                                <th>Edit</th>
+                            </tr>
+                        </thead>
+                        <tbody id="item-list">
+                            <!-- Item rows will be added dynamically here -->
+                        </tbody>
+                    </table>
+
+                    <div class="pagination" id="pagination">
+                        <!-- Pagination links will be added dynamically here -->
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+    <div class="container tab-content" id="finance">
+        <!-- Add To-Do Tab Content Here -->
+
+        <div class="list-card">
+            <div>
+                <nav class="list-card-nav">
+                    <a onclick="showTaskAddForm()" class="list-card-buttons">Add-Task</a>
+                    <a onclick="showTasks('today')" class="list-card-buttons">Today</a>
+                    <a onclick="showTasks('pending')" class="list-card-buttons">Pending</a>
+                    <a onclick="showTasks('all')" class="list-card-buttons">All Tasks</a>
+                    <a> <input type="text" placeholder="Search.." name="search"><button type="submit"><i
+                                class="fa fa-search"></i></button></a>
+                </nav>
+            </div>
+            <div class="list-card-content">
+                <div id="tasks-add">
+                    <form onsubmit="addNewTask(); return false;">
+                        <div class="form-group">
+                            <label for="taskName">Task Name:</label>
+                            <input type="text" id="taskName" required>
+                        </div>
+                        <button class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+                <div id="tasks-list">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Description</th>
+                                <th>Deadline</th>
+                                <th>Status</th>
+                                <th>Edit</th>
+                            </tr>
+                        </thead>
+                        <tbody id="item-list">
+                            <!-- Item rows will be added dynamically here -->
+                        </tbody>
+                    </table>
+
+                    <div class="pagination" id="pagination">
+                        <!-- Pagination links will be added dynamically here -->
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+    <div class="container tab-content" id="documents">
+        <!-- Add To-Do Tab Content Here -->
+
+        <div class="list-card">
+            <div>
+                <nav class="list-card-nav">
+                    <a onclick="showTaskAddForm()" class="list-card-buttons">Add-Task</a>
+                    <a onclick="showTasks('today')" class="list-card-buttons">Today</a>
+                    <a onclick="showTasks('pending')" class="list-card-buttons">Pending</a>
+                    <a onclick="showTasks('all')" class="list-card-buttons">All Tasks</a>
+                    <a> <input type="text" placeholder="Search.." name="search"><button type="submit"><i
+                                class="fa fa-search"></i></button></a>
+                </nav>
+            </div>
+            <div class="list-card-content">
+                <div id="tasks-add">
+                    <form onsubmit="addNewTask(); return false;">
+                        <div class="form-group">
+                            <label for="taskName">Task Name:</label>
+                            <input type="text" id="taskName" required>
+                        </div>
+                        <button class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+                <div id="tasks-list">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Description</th>
+                                <th>Deadline</th>
+                                <th>Status</th>
+                                <th>Edit</th>
+                            </tr>
+                        </thead>
+                        <tbody id="item-list">
+                            <!-- Item rows will be added dynamically here -->
+                        </tbody>
+                    </table>
+
+                    <div class="pagination" id="pagination">
+                        <!-- Pagination links will be added dynamically here -->
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- Similar structure for other tabs (Reminders, Notes, Finance, Documents) -->
+
+    <script src="js/index.js"> </script>
+    <script src="js/items.js"> </script>
+    <script src="js/remainders.js"> </script>
+
+</body>
+
+</html>
