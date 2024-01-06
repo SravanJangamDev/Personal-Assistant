@@ -87,3 +87,96 @@ Detailed functionality of PA:
 
 
 ---------------------------------------------------------------------------------------------
+
+Entities:
+user:
+	- name
+	- mobile_number
+	- whatsapp_number
+	- email
+	- profile_photo
+	- assistant_name
+	- address -> {
+		- house no
+		- village
+		- town
+		- city
+		- district
+		- state
+		- country
+		- pincode
+	}
+	- emergency_contact -> [
+		{
+			- name
+			- phone_number
+			- email
+			- whatsapp_number
+			- address
+		}
+	]
+	- password
+	- private_key
+
+	- user_id  -> primary key
+
+
+task:
+	- name
+	- description
+	- start_date
+	- end_date
+	- priority
+	- status
+	- remark
+	- tag -> office/personal/home/....
+
+	- task_id -> primary key
+	- user_id -> reference to user
+
+reminder:
+	- name
+	- description
+	- target -> (01, 01/02, 01/02/2023, monday, monday 6 am)
+	- remind_before -> 5 days, 10 days, .....
+	- status
+	- remark
+	- tag -> birthday/credit-card bill........
+
+	- reminder_id -> primary key
+	- user_id -> reference to user
+
+note:
+	- name
+	- description
+	- supporting_documents
+	- tag -> payments/discussion/......
+	
+	- note_id -> primary key
+	- user_id -> reference to user
+
+finance:
+	- name
+	- description
+	- status
+	- remark
+	- transactions -> [{
+		- date
+		- amount
+		- credit/debit
+		- status
+	}]
+	- tag -> home expences/july month expences/...
+	
+	- finance_id -> primary key
+	- user_id -> reference to user
+
+
+document:
+	- name
+	- description
+	- document
+	- tag -> aadhaar/id_proof/land document
+	
+	- document_id -> primary key
+	- user_id -> reference to user
